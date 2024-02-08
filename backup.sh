@@ -15,7 +15,7 @@ TIMESTAMP=$(date +%Y%m%d_%H%M%S)
 mkdir -p $BACKUP_DIR
 
 # Backup filename
-BACKUP_FILE="$BACKUP_DIR/$DB_NAME_$TIMESTAMP.sql"
+BACKUP_FILE="$BACKUP_DIR/$DB_NAME-$TIMESTAMP.sql"
 
 # Command to create backup
 PGPASSWORD=$DB_PASSWORD pg_dump -h $DB_HOST -p $DB_PORT -U $DB_USER -d $DB_NAME > $BACKUP_FILE
@@ -26,4 +26,4 @@ if [ $? -eq 0 ]; then
 else
   echo "Backup failed."
 fi
-
+aws s3 cp s6-user-*  $AWS_S3_BUCKET_NAME

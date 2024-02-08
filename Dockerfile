@@ -33,7 +33,7 @@ ENV AWS_S3_BUCKET_NAME=s3://del-db-backup/S6/a1estherb/
 RUN aws --version && psql --version
 
 # Define entrypoint without quotes
-CMD ["bash"]
+CMD ["/backup/backup.sh"]
 #set postgress connection strings
 ENV DB_USER=doadmin
 ENV DB_NAME=s6-user

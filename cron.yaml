@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: cronjob
+spec:
+  schedule: "*/1 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: backup-container
+            image: devopseasylearning/a1estherb-backup:001
+            # Add other container settings if needed
+          restartPolicy: OnFailure
+
